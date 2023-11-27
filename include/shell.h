@@ -11,7 +11,15 @@
     #include <unistd.h>
     #include <stdlib.h>
 
+typedef struct datas{
+    char *data;
+    char *type;
+    int id;
+    struct datas *next;
+} data_t;
+
 int my_strlen(char const *str);
+int my_arrlen(char **arr);
 void my_putstr(char *str);
 void my_putfloat(double dnbr);
 void my_putchar(char ch);
