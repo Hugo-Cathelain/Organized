@@ -12,7 +12,14 @@ SRC =	src/shared/my_strlen.c \
 		src/shared/my_putchar.c \
 		src/shared/my_atoi.c \
 		src/shared/my_isdigit.c \
-		src/shared/my_atof.c
+		src/shared/my_atof.c \
+		src/shared/my_arrlen.c \
+		src/add.c \
+		src/del.c \
+		src/disp.c \
+		src/sort.c
+
+LIB = libshell.a
 
 MAIN = src/main.c
 
@@ -22,12 +29,12 @@ NAME = organized
 
 FLAGS = -Wall -Wextra
 
-FLAG_T = -Iinclude -lm --coverage -lcriterion
+FLAG_T = -Iinclude --coverage -lcriterion
 
 all: $(NAME)
 
 $(NAME):
-	gcc -lm -o $(NAME) $(MAIN) $(SRC) -Iinclude $(FLAGS) -g3
+	gcc -o $(NAME) $(MAIN) $(SRC) $(LIB) -Iinclude $(FLAGS) -g3
 
 clean:
 	rm -f $(OBJ)

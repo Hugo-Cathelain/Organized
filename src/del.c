@@ -2,17 +2,14 @@
 ** EPITECH PROJECT, 2023
 ** B-CPE-110-LYN-1-1-organized-hugo.cathelain
 ** File description:
-** main
+** del
 */
 #include "shell.h"
 
-int main(int ac, char **av)
+int del(void *data, char **args)
 {
-    data_t *datas = malloc(sizeof(data_t));
-
-    if (ac > 1)
+    if (my_arrlen(args) == 0)
         return 84;
-    datas->next = NULL;
-    workshop_shell(datas);
+    write(1, "DEL", 3);
     return 0;
 }
