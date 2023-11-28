@@ -11,14 +11,19 @@
     #include <unistd.h>
     #include <stdlib.h>
 
-typedef struct datas{
+typedef struct datastructure {
     char *data;
     char *type;
     int id;
     struct datas *next;
 } data_t;
 
-int my_strlen(char const *str);
+typedef struct database {
+    data_t *begin;
+    int curent_id;
+} database_t;
+
+int my_strlen(char *str);
 int my_arrlen(char **arr);
 void my_putstr(char *str);
 void my_putfloat(double dnbr);

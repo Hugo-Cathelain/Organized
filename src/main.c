@@ -8,11 +8,12 @@
 
 int main(int ac, char **av)
 {
-    data_t *datas = malloc(sizeof(data_t));
+    database_t *datab = malloc(sizeof(database_t));
 
     if (ac > 1)
         return 84;
-    datas->next = NULL;
-    workshop_shell(datas);
+    datab->begin = NULL;
+    datab->curent_id = 0;
+    workshop_shell(datab);
     return 0;
 }

@@ -8,8 +8,19 @@
 
 int disp(void *data, char **args)
 {
+    database_t *datab = data;
+    data_t *tmp = datab->begin;
+
     if (my_arrlen(args) != 0)
         return 84;
-    write(1, "DISP", 3);
+    while (tmp != NULL) {
+        my_putstr(tmp->type);
+        my_putstr(" n°");
+        my_putnbr(tmp->id);
+        my_putstr(" - “");
+        my_putstr(tmp->data);
+        my_putstr("”\n");
+        tmp = tmp->next;
+    }
     return 0;
 }
