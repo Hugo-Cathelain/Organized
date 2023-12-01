@@ -14,10 +14,14 @@ SRC =	src/shared/my_strlen.c \
 		src/shared/my_isdigit.c \
 		src/shared/my_atof.c \
 		src/shared/my_arrlen.c \
+		src/shared/my_strcmp.c \
 		src/add.c \
 		src/del.c \
 		src/disp.c \
-		src/sort.c
+		src/sort.c \
+		src/sort_name.c \
+		src/sort_id.c \
+		src/sort_type.c
 
 LIB = libshell.a
 
