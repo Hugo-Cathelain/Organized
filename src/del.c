@@ -11,9 +11,9 @@ static void print_del(data_t *current)
     write(1, current->type, my_strlen(current->type));
     my_putstr(" n°");
     my_putnbr(current->id);
-    my_putstr(" - “");
+    my_putstr(" - \"");
     write(1, current->data, my_strlen(current->data));
-    my_putstr("” deleted.\n");
+    my_putstr("\" deleted.\n");
 }
 
 int del_relay(data_t *current, data_t *tmp, database_t *datab, int id)

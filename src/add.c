@@ -33,9 +33,9 @@ static void print_added(data_t *tmp)
     write(1, tmp->type, my_strlen(tmp->type));
     my_putstr(" n°");
     my_putnbr(tmp->id);
-    my_putstr(" - “");
+    my_putstr(" - \"");
     write(1, tmp->data, my_strlen(tmp->data));
-    my_putstr("” added.\n");
+    my_putstr("\" added.\n");
 }
 
 static char *get_arg(char *args)

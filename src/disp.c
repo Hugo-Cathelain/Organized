@@ -17,9 +17,9 @@ int disp(void *data, char **args)
         my_putstr(tmp->type);
         my_putstr(" n°");
         my_putnbr(tmp->id);
-        my_putstr(" - “");
+        my_putstr(" - \"");
         my_putstr(tmp->data);
-        my_putstr("”\n");
+        my_putstr("\"\n");
         tmp = tmp->next;
     }
     return 0;
