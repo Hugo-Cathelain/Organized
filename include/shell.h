@@ -32,12 +32,17 @@ void my_putnbr(int number);
 int my_atoi(char *nptr);
 int my_isdigit(char ch);
 double my_atof(const char *str);
+int my_strcmp(char const *s1, char const *s2);
 
 // To be implemented
 int add(void *data, char **args);
 int del(void *data, char **args);
 int sort(void *data, char **args);
 int disp(void *data, char **args);
+
+void sort_name(database_t *datab);
+void sort_id(database_t *datab);
+void sort_type(database_t *datab);
 
 // Already implemented
 int workshop_shell(void *data);
