@@ -31,7 +31,6 @@ int del_relay(data_t *current, data_t *tmp, database_t *datab, int id)
         tmp->next = current->next;
     free(current->data);
     free(current->type);
-    free(current->next);
     free(current);
     return 0;
 }
