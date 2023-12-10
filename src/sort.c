@@ -22,7 +22,6 @@ static int get_flags(database_t *datab, char **args, int i)
     }
     if (test_cmp(args[i], "ID")) {
         sort_id(datab);
-        sort_id(datab);
     }
     if (test_cmp(args[i], "TYPE")) {
         sort_type(datab);
