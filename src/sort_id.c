@@ -23,13 +23,11 @@ void sort_id_relay(data_t *prev, data_t *current, data_t *next,
 void sort_id(database_t *datab)
 {
     data_t *current = datab->begin;
-    data_t *prev = malloc(sizeof(data_t));
-    data_t *next = malloc(sizeof(data_t));
+    data_t *prev = NULL;
+    data_t *next = current->next;
 
-    prev = NULL;
     if (next == NULL || current == NULL)
         return;
-    next = current->next;
     while (next != NULL) {
         if (current->id > next->id) {
             sort_id_relay(prev, current, next, datab);

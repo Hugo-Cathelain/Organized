@@ -23,13 +23,11 @@ void sort_name_relay(data_t *prev, data_t *current, data_t *next,
 void sort_name(database_t *datab)
 {
     data_t *current = datab->begin;
-    data_t *prev = malloc(sizeof(data_t));
-    data_t *next = malloc(sizeof(data_t));
+    data_t *prev = NULL;
+    data_t *next = current->next;
 
-    prev = NULL;
     if (next == NULL || current == NULL)
         return;
-    next = current->next;
     while (next != NULL) {
         if (my_strcmp(current->data, next->data) > 0) {
             sort_name_relay(prev, current, next, datab);
