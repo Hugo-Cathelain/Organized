@@ -15,6 +15,7 @@ SRC =	src/shared/my_strlen.c \
 		src/shared/my_atof.c \
 		src/shared/my_arrlen.c \
 		src/shared/my_strcmp.c \
+		src/shared/my_strdup.c \
 		src/add.c \
 		src/del.c \
 		src/disp.c \

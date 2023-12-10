@@ -33,6 +33,7 @@ int my_atoi(char *nptr);
 int my_isdigit(char ch);
 double my_atof(const char *str);
 int my_strcmp(char const *s1, char const *s2);
+char *my_strdup(char *str);
 
 // To be implemented
 int add(void *data, char **args);
@@ -43,6 +44,8 @@ int disp(void *data, char **args);
 void sort_name(database_t *datab);
 void sort_id(database_t *datab);
 void sort_type(database_t *datab);
+void inverse(data_t *first, data_t *front);
+data_t *last_cell(data_t *first);
 
 // Already implemented
 int workshop_shell(void *data);

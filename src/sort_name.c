@@ -6,36 +6,46 @@
 */
 #include "shell.h"
 
-void sort_name_relay(data_t *prev, data_t *current, data_t *next,
-    database_t *datab)
+static data_t *partition(data_t *first, data_t *last)
 {
-    if (prev != NULL) {
-        prev->next = next;
-        current->next = next->next;
-        next->next = current;
-    } else {
-        datab->begin = next;
-        current->next = next->next;
-        next->next = current;
+    data_t *pivot = first;
+    data_t *front = first;
+    data_t *tmp = malloc(sizeof(data_t));
+
+    while (front != NULL && front != last) {
+        if (my_strcmp(first->data, last->data) <= 0) {
+            pivot = first;
+            inverse(tmp, first);
+            inverse(first, front);
+            inverse(front, tmp);
+            first = first->next;
+        }
+        front = front->next;
     }
+    inverse(tmp, first);
+    inverse(first, last);
+    inverse(last, tmp);
+    free(tmp);
+    return pivot;
+}
+
+static void quick_sort(data_t *first, data_t *last)
+{
+    data_t *pivot;
+
+    if (first == last)
+        return;
+    pivot = partition(first, last);
+    if (pivot != NULL && pivot->next != NULL)
+        quick_sort(pivot->next, last);
+    if (pivot != NULL && first != pivot)
+        quick_sort(first, pivot);
 }
 
 void sort_name(database_t *datab)
 {
     data_t *current = datab->begin;
-    data_t *prev = NULL;
-    data_t *next = current->next;
 
-    if (next == NULL || current == NULL)
-        return;
-    while (next != NULL) {
-        if (my_strcmp(current->data, next->data) > 0) {
-            sort_name_relay(prev, current, next, datab);
-            current = datab->begin;
-            next = current->next;
-        }
-        prev = current;
-        current = current->next;
-        next = current->next;
-    }
+    quick_sort(current, last_cell(current));
+    quick_sort(current, last_cell(current));
 }

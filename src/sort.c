@@ -6,6 +6,15 @@
 */
 #include "shell.h"
 
+data_t *last_cell(data_t *first)
+{
+    data_t *tmp = first;
+
+    while (tmp != NULL && tmp->next != NULL)
+        tmp = tmp->next;
+    return tmp;
+}
+
 static int test_cmp(char *args, char *str)
 {
     for (int i = 0; args[i] && str[i]; i++)
@@ -16,17 +25,12 @@ static int test_cmp(char *args, char *str)
 
 static int get_flags(database_t *datab, char **args, int i)
 {
-    if (test_cmp(args[i], "NAME")) {
+    if (test_cmp(args[i], "NAME"))
         sort_name(datab);
-        sort_name(datab);
-    }
-    if (test_cmp(args[i], "ID")) {
+    if (test_cmp(args[i], "ID"))
         sort_id(datab);
-    }
-    if (test_cmp(args[i], "TYPE")) {
+    if (test_cmp(args[i], "TYPE"))
         sort_type(datab);
-        sort_type(datab);
-    }
     return 0;
 }
 

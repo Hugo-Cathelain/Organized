@@ -6,51 +6,47 @@
 */
 #include "shell.h"
 
-data_t *last_cell(data_t *first)
+void inverse(data_t *first, data_t *front)
 {
-    data_t *tmp = first;
-
-    while (tmp != NULL && tmp->next != NULL)
-        tmp = tmp->next;
-    return tmp;
+    first->id = front->id;
+    first->data = my_strdup(front->data);
+    first->type = my_strdup(front->type);
 }
 
-data_t *partition(data_t *first, data_t *last)
+static data_t *partition(data_t *first, data_t *last)
 {
     data_t *pivot = first;
     data_t *front = first;
-    int temp = 0;
+    data_t *tmp = malloc(sizeof(data_t));
 
     while (front != NULL && front != last) {
         if (front->id < last->id) {
             pivot = first;
-            temp = first->id;
-            first->id = front->id;
-            front->id = temp;
+            inverse(tmp, first);
+            inverse(first, front);
+            inverse(front, tmp);
             first = first->next;
         }
         front = front->next;
     }
-    temp = first->id;
-    first->id = last->id;
-    last->id = temp;
+    inverse(tmp, first);
+    inverse(first, last);
+    inverse(last, tmp);
+    free(tmp);
     return pivot;
 }
 
-void quick_sort(data_t *first, data_t *last)
+static void quick_sort(data_t *first, data_t *last)
 {
     data_t *pivot;
 
-    if (first == last) {
+    if (first == last)
         return;
-    }
     pivot = partition(first, last);
-    if (pivot != NULL && pivot->next != NULL) {
+    if (pivot != NULL && pivot->next != NULL)
         quick_sort(pivot->next, last);
-    }
-    if (pivot != NULL && first != pivot) {
+    if (pivot != NULL && first != pivot)
         quick_sort(first, pivot);
-    }
 }
 
 void sort_id(database_t *datab)
