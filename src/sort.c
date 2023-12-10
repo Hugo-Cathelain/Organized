@@ -6,31 +6,9 @@
 */
 #include "shell.h"
 
-static int test_type(char *args)
+static int test_cmp(char *args, char *str)
 {
-    char str[4] = "TYPE";
-
-    for (int i = 0; args[i]; i++)
-        if (args[i] != str[i])
-            return 0;
-    return 1;
-}
-
-static int test_id(char *args)
-{
-    char str[2] = "ID";
-
-    for (int i = 0; args[i]; i++)
-        if (args[i] != str[i])
-            return 0;
-    return 1;
-}
-
-static int test_name(char *args)
-{
-    char str[4] = "NAME";
-
-    for (int i = 0; args[i]; i++)
+    for (int i = 0; args[i] && str[i]; i++)
         if (args[i] != str[i])
             return 0;
     return 1;
@@ -38,15 +16,15 @@ static int test_name(char *args)
 
 static int get_flags(database_t *datab, char **args, int i)
 {
-    if (test_name(args[i])) {
+    if (test_cmp(args[i], "NAME")) {
         sort_name(datab);
         sort_name(datab);
     }
-    if (test_id(args[i])) {
+    if (test_cmp(args[i], "ID")) {
         sort_id(datab);
         sort_id(datab);
     }
-    if (test_type(args[i])) {
+    if (test_cmp(args[i], "TYPE")) {
         sort_type(datab);
         sort_type(datab);
     }

@@ -11,14 +11,14 @@
     #include <unistd.h>
     #include <stdlib.h>
 
-typedef struct datastructure {
+typedef struct datas {
     char *data;
     char *type;
     int id;
     struct datas *next;
 } data_t;
 
-typedef struct database {
+typedef struct {
     data_t *begin;
     int curent_id;
 } database_t;
