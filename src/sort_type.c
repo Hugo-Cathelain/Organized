@@ -47,5 +47,4 @@ void sort_type(database_t *datab)
     data_t *current = datab->begin;
 
     quick_sort(current, last_cell(current));
-    quick_sort(current, last_cell(current));
 }

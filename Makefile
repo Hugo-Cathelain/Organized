@@ -7,7 +7,6 @@
 
 SRC =	src/shared/my_strlen.c \
 		src/shared/my_putstr.c \
-		src/shared/my_putfloat.c \
 		src/shared/my_putnbr.c \
 		src/shared/my_putchar.c \
 		src/shared/my_atoi.c \
