@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** B-CPE-110-LYN-1-1-organized-hugo.cathelain
 ** File description:
-** sort_id
+** sort_name
 */
 #include "shell.h"
 
@@ -13,7 +13,7 @@ static data_t *partition(data_t *first, data_t *last)
     data_t *tmp = malloc(sizeof(data_t));
 
     while (front != NULL && front != last) {
-        if (front->id < last->id) {
+        if (my_strcmp(first->data, last->data) >= 0) {
             pivot = first;
             inverse(tmp, first);
             inverse(first, front);
@@ -42,7 +42,7 @@ static void quick_sort(data_t *first, data_t *last)
         quick_sort(first, pivot);
 }
 
-void sort_id(database_t *datab)
+void sort_name_rev(database_t *datab)
 {
     data_t *current = datab->begin;
 

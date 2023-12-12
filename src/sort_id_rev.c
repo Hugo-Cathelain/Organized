@@ -6,6 +6,13 @@
 */
 #include "shell.h"
 
+void inverse(data_t *first, data_t *front)
+{
+    first->id = front->id;
+    first->data = my_strdup(front->data);
+    first->type = my_strdup(front->type);
+}
+
 static data_t *partition(data_t *first, data_t *last)
 {
     data_t *pivot = first;
@@ -13,7 +20,7 @@ static data_t *partition(data_t *first, data_t *last)
     data_t *tmp = malloc(sizeof(data_t));
 
     while (front != NULL && front != last) {
-        if (front->id < last->id) {
+        if (front->id > last->id) {
             pivot = first;
             inverse(tmp, first);
             inverse(first, front);
@@ -42,7 +49,7 @@ static void quick_sort(data_t *first, data_t *last)
         quick_sort(first, pivot);
 }
 
-void sort_id(database_t *datab)
+void sort_id_rev(database_t *datab)
 {
     data_t *current = datab->begin;
 

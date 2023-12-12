@@ -23,14 +23,37 @@ static int test_cmp(char *args, char *str)
     return 1;
 }
 
+static int flags_relay(database_t *datab, char **args, int i)
+{
+    if (i == 1 && test_cmp(args[i], "-r")) {
+        if (test_cmp(args[i - 1], "NAME"))
+            sort_name_rev(datab);
+        if (test_cmp(args[i - 1], "TYPE"))
+            sort_type_rev(datab);
+        if (test_cmp(args[i - 1], "ID"))
+            sort_id_rev(datab);
+    }
+    return 0;
+}
+
 static int get_flags(database_t *datab, char **args, int i)
 {
+    if (i > 0)
+        return flags_relay(datab, args, i);
     if (test_cmp(args[i], "NAME"))
         sort_name(datab);
     if (test_cmp(args[i], "ID"))
         sort_id(datab);
     if (test_cmp(args[i], "TYPE"))
         sort_type(datab);
+    if (test_cmp(args[i], "-r")) {
+        if (i != 0 && test_cmp(args[i - 1], "NAME"))
+            sort_name_rev(datab);
+        if (i != 0 && test_cmp(args[i - 1], "TYPE"))
+            sort_type_rev(datab);
+        if (i != 0 && test_cmp(args[i - 1], "ID"))
+            sort_id_rev(datab);
+    }
     return 0;
 }
 

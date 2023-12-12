@@ -21,7 +21,10 @@ SRC =	src/shared/my_strlen.c \
 		src/sort.c \
 		src/sort_name.c \
 		src/sort_id.c \
-		src/sort_type.c
+		src/sort_type.c \
+		src/sort_id_rev.c \
+		src/sort_name_rev.c \
+		src/sort_type_rev.c
 
 LIB = libshell.a
 
