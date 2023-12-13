@@ -42,7 +42,7 @@ static void quick_sort(data_t *first, data_t *last)
         quick_sort(first, pivot);
 }
 
-void sort_id(database_t *datab, int i)
+int sort_id(database_t *datab, int i)
 {
     data_t *current = datab->begin;
     data_t *tmp = current;
@@ -56,4 +56,5 @@ void sort_id(database_t *datab, int i)
             quick_sort(tmp, tmp->next);
         tmp = tmp->next;
     }
+    return 0;
 }

@@ -42,14 +42,12 @@ static void quick_sort(data_t *first, data_t *last)
         quick_sort(first, pivot);
 }
 
-void sort_name_rev(database_t *datab, int i)
+int sort_name_rev(database_t *datab, int i)
 {
     data_t *current = datab->begin;
     data_t *tmp = current;
     data_t *tmpp = tmp;
 
-    if (i == 1 && current != NULL)
-        quick_sort(current, last_cell(current));
     while (tmp != NULL && i == 1) {
         if (tmp->next != NULL && my_strcmp(tmp->data, tmp->next->data) >= 0)
             quick_sort(current, last_cell(current));
@@ -64,4 +62,5 @@ void sort_name_rev(database_t *datab, int i)
         }
         tmp = tmp->next;
     }
+    return 0;
 }

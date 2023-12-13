@@ -25,32 +25,32 @@ static int test_cmp(char *args, char *str)
 
 static int flags_relay(database_t *datab, char **args, int i)
 {
-    if (test_cmp(args[i], "NAME"))
-        sort_name(datab, 2);
-    if (test_cmp(args[i], "TYPE"))
-        sort_type(datab, 2);
-    if (test_cmp(args[i], "ID"))
-        sort_id(datab, 2);
-    if (i > 1 && test_cmp(args[i], "-r")) {
-        if (test_cmp(args[i - 1], "NAME"))
-            sort_name_rev(datab, 2);
-        if (test_cmp(args[i - 1], "TYPE"))
-            sort_type_rev(datab, 2);
-        if (test_cmp(args[i - 1], "ID"))
-            sort_id_rev(datab, 2);
+    if (args[i + 1] && test_cmp(args[i + 1], "-r")) {
+        if (test_cmp(args[i], "NAME"))
+            return sort_name_rev(datab, 2);
+        if (test_cmp(args[i], "TYPE"))
+            return sort_type_rev(datab, 2);
+        if (test_cmp(args[i], "ID"))
+            return sort_id_rev(datab, 2);
     }
+    if (test_cmp(args[i], "NAME"))
+        return sort_name(datab, 2);
+    if (test_cmp(args[i], "TYPE"))
+        return sort_type(datab, 2);
+    if (test_cmp(args[i], "ID"))
+        return sort_id(datab, 2);
     return 0;
 }
 
 static int get_flags(database_t *datab, char **args, int i)
 {
-    if (i == 1 && test_cmp(args[i], "-r")) {
-        if (test_cmp(args[i - 1], "NAME"))
-            sort_name_rev(datab, 1);
-        if (test_cmp(args[i - 1], "TYPE"))
-            sort_type_rev(datab, 1);
-        if (test_cmp(args[i - 1], "ID"))
-            sort_id_rev(datab, 1);
+    if (args[i + 1] && test_cmp(args[i + 1], "-r")) {
+        if (test_cmp(args[i], "NAME"))
+            return sort_name_rev(datab, 1);
+        if (test_cmp(args[i], "TYPE"))
+            return sort_type_rev(datab, 1);
+        if (test_cmp(args[i], "ID"))
+            return sort_id_rev(datab, 1);
     }
     if (i > 0)
         return flags_relay(datab, args, i);

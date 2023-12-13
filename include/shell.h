@@ -41,12 +41,12 @@ int del(void *data, char **args);
 int sort(void *data, char **args);
 int disp(void *data, char **args);
 
-void sort_name(database_t *datab, int i);
-void sort_name_rev(database_t *datab, int i);
-void sort_id(database_t *datab, int i);
-void sort_id_rev(database_t *datab, int i);
-void sort_type(database_t *datab, int i);
-void sort_type_rev(database_t *datab, int i);
+int sort_name(database_t *datab, int i);
+int sort_name_rev(database_t *datab, int i);
+int sort_id(database_t *datab, int i);
+int sort_id_rev(database_t *datab, int i);
+int sort_type(database_t *datab, int i);
+int sort_type_rev(database_t *datab, int i);
 void inverse(data_t *first, data_t *front);
 data_t *last_cell(data_t *first);
 
