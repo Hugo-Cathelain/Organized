@@ -42,9 +42,26 @@ static void quick_sort(data_t *first, data_t *last)
         quick_sort(first, pivot);
 }
 
-void sort_type(database_t *datab)
+void sort_type(database_t *datab, int i)
 {
     data_t *current = datab->begin;
+    data_t *tmp = current;
+    data_t *tmpp = tmp;
 
-    quick_sort(current, last_cell(current));
+    if (i == 1 && current != NULL)
+        quick_sort(current, last_cell(current));
+    while (tmp != NULL && i == 1) {
+        if (tmp->next != NULL && my_strcmp(tmp->type, tmp->next->type) <= 0)
+            quick_sort(current, last_cell(current));
+        tmp = tmp->next;
+    }
+    while (tmp != NULL && i == 2) {
+        if (tmp->next != NULL && my_strcmp(tmp->data, tmp->next->data) == 0 &&
+            my_strcmp(tmp->type, tmp->next->type) >= 0) {
+            quick_sort(tmp, tmp->next);
+            tmp = tmpp;
+            tmpp = tmpp->next;
+        }
+        tmp = tmp->next;
+    }
 }
