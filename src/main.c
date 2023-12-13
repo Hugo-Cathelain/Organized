@@ -14,6 +14,5 @@ int main(int ac, char **av)
         return 84;
     datab->begin = NULL;
     datab->curent_id = 0;
-    workshop_shell(datab);
-    return 0;
+    return workshop_shell(datab);
 }
